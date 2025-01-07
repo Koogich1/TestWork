@@ -8,7 +8,7 @@ const MainBlock = () => {
 	return (
 		<div className="mt-20 relative">
 			<div className="w-full h-[550px]">
-				<Image src={"/main.jpeg"} alt="mainImage" width={1920} height={720} className="z-0 w-full h-[550px] absolute top-0 object-cover blur-[1px]"/>
+				<Image src={"./main.jpeg"} alt="mainImage" width={1920} height={720} className="z-0 w-full h-[550px] absolute top-0 object-cover blur-[1px]"/>
 				<div className="w-full h-[550px] bg-black z-10 absolute top-0 opacity-70"/>
 				<div className="z-50 text-white absolute top-0 w-full flex h-[550] items-start flex-col gap-5 justify-center px-5 lg:px-[5%]">
 					<h1 className="text-5xl font-extrabold w-1/2">Iphonium - ваш гид в мире Iphone</h1>
