@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../hooks/useRedux';
 import { toggleFavorite, removeProduct } from '../../store/store'; 
 import { Button } from '@/components/ui/button';
 import ProductUpdate from '../modal/productUpdate';
+import Image from 'next/image';
 
 
 interface ProductCardProps {
@@ -62,7 +63,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       >
       <div className="flex justify-between items-center w-full z-50">
       </div>
-      <img src={product.imageUrl} alt={product.title} className="w-full h-[13rem] object-contain mb-4" />
+      <Image src={product.imageUrl} alt={product.title} className="w-full h-[13rem] object-contain mb-4" />
         <h3 className="font-semibold text-lg mb-2">{product.title}</h3>
         <p className="text-gray-600 text-sm h-20 overflow-hidden">{truncateText(product.description, 150)}</p>
       </div>

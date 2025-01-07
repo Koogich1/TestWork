@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import ErrorBlock from "../components/error/ErrorBlock";
 import { FaHeart, FaTrash } from "react-icons/fa";
+import Image from "next/image";
 
 const CreateProductPage = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +18,6 @@ const CreateProductPage = () => {
   const [imageUrl, setImageUrl] = useState<string>("");
   const [preview, setPreview] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
-  const [isHere, setIsHere] = useState<boolean>(false);
 
   const handleCreateProduct = () => {
     if (!title || !description || !imageUrl) {
@@ -94,7 +94,7 @@ const CreateProductPage = () => {
 									</div>
 								</div>
 								<div className="z-10 rounded p-4 flex flex-col h-full cursor-pointer">
-									<img src={imageUrl} alt={title} className="w-full h-[13rem] object-contain mb-4" />
+									<Image src={imageUrl} alt={title} className="w-full h-[13rem] object-contain mb-4" />
 									<h3 className="font-semibold text-lg mb-2">{title}</h3>
 									<p className="text-gray-600 text-sm h-20 overflow-hidden">{truncateText(description, 150)}</p>
 								</div>

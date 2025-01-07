@@ -1,14 +1,12 @@
 "use client"
 
-import { useAppDispatch } from '@/app/hooks/useRedux';
 import { RootState } from '@/app/store/store';
 import { Button } from '@/components/ui/button';
-import React, { useState } from 'react'
-import { FaHeart, FaTrash } from 'react-icons/fa';
+import React from 'react'
 import { useSelector } from 'react-redux';
-import ProductUpdate from '../../modal/productUpdate';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const truncateText = (text: string, maxLength: number) => {
 	if (text.length > maxLength) {
@@ -18,7 +16,6 @@ const truncateText = (text: string, maxLength: number) => {
 };
 
 const MiniKatalog = () => {	
-	const [choosenCardId, setChoosenCardId] = useState<any>("")
 	const products = useSelector((state: RootState) => state.products.products);
 	const router = useRouter()
 
@@ -47,7 +44,7 @@ const MiniKatalog = () => {
 						>
 							<div className="flex justify-between items-center w-full z-50">
 							</div>
-							<img src={product.imageUrl} alt={product.title} className="w-full h-[13rem] object-contain mb-4" />
+							<Image src={product.imageUrl} alt={product.title} className="w-full h-[13rem] object-contain mb-4" />
 								<h3 className="font-semibold text-lg mb-2">{product.title}</h3>
 								<p className="text-gray-600 text-sm h-20 overflow-hidden">{truncateText(product.description, 150)}</p>
 							</div>

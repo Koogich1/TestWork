@@ -8,7 +8,7 @@ import { useAppDispatch } from '../../hooks/useRedux';
 import { Button } from '@/components/ui/button';
 import HashLoader from "react-spinners/HashLoader";
 import { Input } from '@/components/ui/input';
-import { FaFilter, FaPlus } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 import ProductCreate from '../modal/productCreate';
 
 const ProductList: React.FC = () => {
@@ -50,7 +50,7 @@ const ProductList: React.FC = () => {
   const totalPages = Math.ceil(searchedProducts.length / productsPerPage);
 
 
-  const paginationButtons: any = [];
+  const paginationButtons: React.ReactNode[] = [];
 
     for (let i = 1; i <= totalPages; i++) {
       paginationButtons.push(

@@ -19,7 +19,7 @@ import { Textarea } from '@/components/ui/textarea'
 type Props = {
   product: Product;
   open: boolean;
-  handleOpenChange: any;
+  handleOpenChange: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ProductUpdate = ({ product, open, handleOpenChange }: Props) => {

@@ -2,8 +2,6 @@
 
 import React from 'react'
 import ProductList from "../components/product/productList"
-import { Provider } from 'react-redux';
-import { store } from '../store/store';
 
 const Products = () => {
  return (

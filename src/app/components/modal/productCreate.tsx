@@ -9,21 +9,21 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import ErrorBlock from "../error/ErrorBlock";
-import { FaHeart, FaTrash } from "react-icons/fa";
-import ProductUpdate from "./productUpdate";
+import { FaHeart, FaTrash } from "react-icons/fa";;
 import Link from "next/link";
+import Image from "next/image";
 
 type Props = {
 	open: boolean;
-	setOpen: any;
+	setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	productsLendth: number;
 }
+
 const ProductCreate = ({open, setOpen, productsLendth}: Props) => {
 	const dispatch = useAppDispatch();
 
@@ -139,7 +139,7 @@ const ProductCreate = ({open, setOpen, productsLendth}: Props) => {
 							>
 							<div className="flex justify-between items-center w-full z-50">
 							</div>
-							<img src={imageUrl} alt={title} className="w-full h-[13rem] object-contain mb-4" />
+							<Image src={imageUrl} alt={title} className="w-full h-[13rem] object-contain mb-4" />
 								<h3 className="font-semibold text-lg mb-2">{title}</h3>
 								<p className="text-gray-600 text-sm h-20 overflow-hidden">{truncateText(description, 150)}</p>
 							</div>
