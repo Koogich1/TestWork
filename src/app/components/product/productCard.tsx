@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import { Product } from '../../store/store'; 
 import { FaHeart, FaTrash } from 'react-icons/fa';
-import { useRouter } from 'next/navigation';
 import { useAppDispatch } from '../../hooks/useRedux';
 import { toggleFavorite, removeProduct } from '../../store/store'; 
 import { Button } from '@/components/ui/button';
 import ProductUpdate from '../modal/productUpdate';
-import Image from 'next/image';
 
 
 interface ProductCardProps {
   product: Product;
+  setChoosenProduct:  React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const router = useRouter();
+const ProductCard: React.FC<ProductCardProps> = ({ product, setChoosenProduct }) => {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState<boolean>(false)
 
@@ -24,8 +22,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       (e.target as HTMLElement).closest('.remove-icon')
     ) {
       return;
-    }
-    router.push(`/products/${product.id}`);
+    } 
+    setChoosenProduct(product.id)
   };
 
   const handleToggleFavorite = () => {
@@ -63,7 +61,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       >
       <div className="flex justify-between items-center w-full z-50">
       </div>
-      <Image src={product.imageUrl} alt={product.title} className="w-full h-[13rem] object-contain mb-4" />
+      <img src={product.imageUrl} alt={product.title} className="w-full h-[13rem] object-contain mb-4" />
         <h3 className="font-semibold text-lg mb-2">{product.title}</h3>
         <p className="text-gray-600 text-sm h-20 overflow-hidden">{truncateText(product.description, 150)}</p>
       </div>

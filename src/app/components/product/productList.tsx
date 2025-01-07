@@ -10,6 +10,7 @@ import HashLoader from "react-spinners/HashLoader";
 import { Input } from '@/components/ui/input';
 import { FaPlus } from 'react-icons/fa';
 import ProductCreate from '../modal/productCreate';
+import ChoosenProductCard from './PageForProduct';
 
 const ProductList: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -19,6 +20,7 @@ const ProductList: React.FC = () => {
   const productsPerPage = useSelector((state: RootState) => state.products.productsPerPage);
   const searchQuery = useSelector((state: RootState) => state.products.searchQuery); // Получаем поисковый запрос
   const [createModal, setOpenCreateModal] = useState<boolean>(false)
+  const [choosenCardId, setChoosenCardId] = useState<number | null>(null)
 
   const filteredProducts = favoriteFilter
       ? products.filter(product => product.isFavorite)
@@ -63,8 +65,6 @@ const ProductList: React.FC = () => {
         </Button>
       );
     }
-
-
 
   const renderPagination = () => {
     if(totalPages <= 1) return null; // убираем пагинацию если нет страниц
@@ -123,10 +123,15 @@ const ProductList: React.FC = () => {
             <FaPlus />
           </Button>
         </div>
-          {currentProducts.length > 0 ? 
+          {choosenCardId ? 
+          <div className='min-h-[60vh]'>
+            <ChoosenProductCard id={choosenCardId} setChoosenId={setChoosenCardId} />
+          </div>
+        :
+        currentProducts.length > 0 ? 
           <div className="grid grid-cols-1 items-start relative sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 mt-4 min-h-[60vh]">
             {currentProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} setChoosenProduct={setChoosenCardId} />
             ))}
           </div>
         :
@@ -139,8 +144,9 @@ const ProductList: React.FC = () => {
             </div>
           </div>
           }
-        
-        {renderPagination()}
+        {
+          !choosenCardId && renderPagination()
+        }
         <ProductCreate open={createModal} setOpen={setOpenCreateModal} productsLendth={products.length}/>
     </div>
   );
