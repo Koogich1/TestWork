@@ -39,12 +39,12 @@ const MiniKatalog = () => {
 						<div
 							className="z-10 rounded p-4 flex flex-col h-full cursor-pointer"
 							onClick={() => {
-								router.push(`/products/${product.id}`)
+								router.push(`/products`)
 							}}
 						>
 							<div className="flex justify-between items-center w-full z-50">
 							</div>
-							<Image src={product.imageUrl} alt={product.title} className="w-full h-[13rem] object-contain mb-4" />
+							<img src={product.imageUrl} alt={product.title} className="w-full h-[13rem] object-contain mb-4" />
 								<h3 className="font-semibold text-lg mb-2">{product.title}</h3>
 								<p className="text-gray-600 text-sm h-20 overflow-hidden">{truncateText(product.description, 150)}</p>
 							</div>
