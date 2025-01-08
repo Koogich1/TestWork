@@ -6,7 +6,6 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const truncateText = (text: string, maxLength: number) => {
 	if (text.length > maxLength) {
